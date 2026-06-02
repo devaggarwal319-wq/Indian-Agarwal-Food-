@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Indian Agarwal Food</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --saffron:  #E8611A;
+    --deepred:  #B5251B;
+    --turmeric: #F4A623;
+    --cream:    #FDF8F0;
+    --ivory:    #FFF9F0;
+    --gold:     #C98B2A;
+    --dark:     #2C1A0E;
+    --mid:      #5E3020;
+    --soft:     #8B5E3C;
+    --white:    #FFFFFF;
+    --leaf:     #3A7D44;
+    --leaflt:   #EAF4EB;
+    --radius:   14px;
+    --shadow:   0 6px 32px rgba(44,26,14,0.10);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--deepred);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6vw;
+    height: 64px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo {
+    width: 40px; height: 40px;
+    background: var(--turmeric);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .nav-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .nav-title span { display: block; font-size: 0.7rem; font-weight: 400; color: #f9c97c; font-family: 'Nunito', sans-serif; letter-spacing: 1.5px; text-transform: uppercase; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul li a {
+    color: #f9c97c; text-decoration: none; font-weight: 600; font-size: 0.92rem;
+    transition: color 0.2s;
+  }
+  nav ul li a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--turmeric); color: var(--dark) !important;
+    padding: 7px 18px; border-radius: 30px; font-weight: 700 !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+  .nav-cta:hover { background: #f7b732 !important; transform: scale(1.04); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 88vh;
+    background: linear-gradient(135deg, #3B0F08 0%, #7A1F10 40%, #C04020 100%);
+    display: flex; align-items: center;
+    padding: 6rem 6vw 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(244,166,35,0.18) 0%, transparent 55%),
+      radial-gradient(circle at 10% 80%, rgba(232,97,26,0.15) 0%, transparent 45%);
+  }
+  .hero-mandala {
+    position: absolute; right: -60px; top: 50%;
+    transform: translateY(-50%);
+    width: 520px; height: 520px;
+    opacity: 0.07;
+    font-size: 520px; line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 600px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(244,166,35,0.2);
+    border: 1.5px solid rgba(244,166,35,0.5);
+    color: var(--turmeric);
+    padding: 6px 18px; border-radius: 30px;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 1.4rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 900; line-height: 1.12;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em {
+    color: var(--turmeric); font-style: normal;
+  }
+  .hero p {
+    color: rgba(255,255,255,0.82);
+    font-size: 1.08rem; line-height: 1.7;
+    margin-bottom: 2rem; max-width: 460px;
+  }
+  .hero-price-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--turmeric);
+    color: var(--dark); font-weight: 800;
+    padding: 10px 28px; border-radius: 50px;
+    font-size: 1.35rem;
+    box-shadow: 0 4px 20px rgba(244,166,35,0.45);
+    margin-bottom: 1rem;
+  }
+  .hero-price-pill .old { text-decoration: line-through; opacity: 0.5; font-size: 1rem; }
+  .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.6rem; }
+  .btn-primary {
+    background: var(--saffron);
+    color: var(--white); font-weight: 700;
+    padding: 13px 30px; border-radius: 50px;
+    text-decoration: none; font-size: 1rem;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 16px rgba(232,97,26,0.4);
+  }
+  .btn-primary:hover { background: #d0540e; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white); font-weight: 700;
+    padding: 13px 30px; border-radius: 50px;
+    text-decoration: none; font-size: 1rem;
+    border: 2px solid rgba(255,255,255,0.45); cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+
+  /* ─── STATS STRIP ─── */
+  .stats-strip {
+    background: var(--dark);
+    display: flex; justify-content: center; gap: 0;
+    padding: 0;
+  }
+  .stat-item {
+    flex: 1; max-width: 220px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: var(--turmeric); font-family: 'Playfair Display', serif; }
+  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 5rem 6vw; }
+  .section-tag {
+    display: inline-block;
+    background: rgba(232,97,26,0.1);
+    color: var(--saffron); font-weight: 700;
+    padding: 4px 16px; border-radius: 20px;
+    font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 0.7rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800; color: var(--dark);
+    line-height: 1.2; margin-bottom: 0.6rem;
+  }
+  .section-sub {
+    color: var(--soft); font-size: 1rem; max-width: 480px; line-height: 1.65;
+  }
+
+  /* ─── MENU ─── */
+  #menu { background: var(--ivory); }
+  .menu-header { text-align: center; margin-bottom: 3.5rem; }
+  .veg-strip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--leaflt); border: 1.5px solid var(--leaf);
+    color: var(--leaf); padding: 5px 16px; border-radius: 20px;
+    font-size: 0.82rem; font-weight: 700; margin-bottom: 1rem;
+  }
+  .veg-dot { width: 10px; height: 10px; background: var(--leaf); border-radius: 2px; }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.6rem;
+  }
+  .menu-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.22s, box-shadow 0.22s;
+    border: 1.5px solid rgba(232,97,26,0.08);
+  }
+  .menu-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(44,26,14,0.15);
+  }
+  .card-img {
+    height: 180px;
+    background: linear-gradient(135deg, #f9ede0, #f9d89e);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 72px;
+    position: relative;
+  }
+  .card-img .veg-mark {
+    position: absolute; top: 10px; right: 10px;
+    width: 22px; height: 22px;
+    background: var(--white); border: 2px solid var(--leaf);
+    border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  }
+  .card-img .veg-mark::after {
+    content: '';
+    width: 10px; height: 10px;
+    background: var(--leaf); border-radius: 50%;
+  }
+  .card-body { padding: 1.2rem 1.3rem 1.4rem; }
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--dark); margin-bottom: 4px;
+  }
+  .card-desc { font-size: 0.88rem; color: var(--soft); line-height: 1.55; margin-bottom: 1rem; }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-price {
+    font-size: 1.4rem; font-weight: 800; color: var(--saffron);
+  }
+  .card-price sup { font-size: 0.8rem; }
+  .order-btn {
+    background: var(--saffron);
+    color: var(--white); font-weight: 700;
+    border: none; padding: 9px 20px; border-radius: 30px;
+    cursor: pointer; font-size: 0.88rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .order-btn:hover { background: #d0540e; transform: scale(1.04); }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .tag {
+    font-size: 0.72rem; font-weight: 700;
+    padding: 2px 9px; border-radius: 10px;
+  }
+  .tag-spicy { background: #fff0e8; color: #d0540e; }
+  .tag-mild  { background: #e8f4eb; color: var(--leaf); }
+  .tag-special { background: #fff6d6; color: #9c6b00; }
+
+  /* ─── STAR RATING ─── */
+  .card-rating {
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 8px;
+  }
+  .stars { display: flex; gap: 2px; }
+  .star {
+    font-size: 0.9rem; cursor: pointer;
+    color: #ddd; transition: color 0.15s, transform 0.12s;
+    user-select: none;
+  }
+  .star.filled { color: #f4a623; }
+  .star:hover { transform: scale(1.2); }
+  .rating-count { font-size: 0.75rem; color: var(--soft); font-weight: 600; }
+
+  /* ─── REVIEWS SECTION ─── */
+  #reviews { background: var(--ivory); }
+  .reviews-header { text-align: center; margin-bottom: 3rem; }
+  .review-summary {
+    display: flex; align-items: center; justify-content: center;
+    gap: 3rem; flex-wrap: wrap;
+    background: var(--white); border-radius: 24px;
+    padding: 2.5rem; margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+    border: 1.5px solid rgba(232,97,26,0.08);
+    max-width: 700px; margin-left: auto; margin-right: auto; margin-bottom: 3rem;
+  }
+  .summary-big {
+    text-align: center;
+  }
+  .summary-score {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem; font-weight: 900;
+    color: var(--saffron); line-height: 1;
+  }
+  .summary-stars { font-size: 1.4rem; margin: 4px 0; }
+  .summary-label { font-size: 0.82rem; color: var(--soft); font-weight: 600; }
+  .summary-bars { flex: 1; min-width: 200px; }
+  .bar-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
+  .bar-label { font-size: 0.8rem; font-weight: 700; color: var(--dark); width: 40px; text-align: right; }
+  .bar-track {
+    flex: 1; height: 8px; background: #f0ece8; border-radius: 10px; overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%; border-radius: 10px; background: var(--turmeric);
+    transition: width 1s ease;
+  }
+  .bar-count { font-size: 0.75rem; color: var(--soft); width: 24px; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.4rem; margin-bottom: 3rem;
+  }
+  .review-card {
+    background: var(--white); border-radius: 18px;
+    padding: 1.5rem; box-shadow: var(--shadow);
+    border: 1.5px solid rgba(232,97,26,0.06);
+  }
+  .review-top {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 0.8rem;
+  }
+  .reviewer-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1rem; color: var(--white);
+    flex-shrink: 0;
+  }
+  .reviewer-name { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+  .reviewer-meta { font-size: 0.75rem; color: var(--soft); margin-top: 1px; }
+  .review-stars { font-size: 0.85rem; margin-bottom: 0.6rem; }
+  .review-text { font-size: 0.88rem; color: var(--soft); line-height: 1.65; }
+  .review-item-tag {
+    display: inline-block; margin-top: 0.8rem;
+    background: rgba(232,97,26,0.08); color: var(--saffron);
+    font-size: 0.72rem; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px;
+  }
+
+  /* ─── WRITE REVIEW FORM ─── */
+  .write-review {
+    background: var(--white); border-radius: 24px;
+    padding: 2.5rem; max-width: 600px;
+    margin: 0 auto;
+    box-shadow: var(--shadow);
+    border: 1.5px solid rgba(232,97,26,0.1);
+  }
+  .write-review h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 800;
+    color: var(--dark); margin-bottom: 0.4rem;
+  }
+  .write-review p { font-size: 0.88rem; color: var(--soft); margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-label { display: block; font-weight: 700; font-size: 0.85rem; color: var(--dark); margin-bottom: 6px; }
+  .form-input, .form-textarea, .form-select {
+    width: 100%; padding: 10px 14px;
+    border: 1.5px solid rgba(44,26,14,0.12); border-radius: 12px;
+    font-family: 'Nunito', sans-serif; font-size: 0.92rem;
+    color: var(--dark); background: var(--cream);
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--saffron);
+  }
+  .form-textarea { resize: vertical; min-height: 90px; }
+  .form-stars-pick {
+    display: flex; gap: 8px; margin-top: 4px;
+  }
+  .pick-star {
+    font-size: 2rem; cursor: pointer;
+    color: #ddd; transition: color 0.15s, transform 0.12s;
+    user-select: none;
+  }
+  .pick-star.active { color: #f4a623; }
+  .pick-star:hover { transform: scale(1.15); }
+  .submit-review {
+    background: var(--saffron); color: var(--white);
+    border: none; padding: 12px 32px; border-radius: 30px;
+    font-weight: 800; font-size: 1rem; cursor: pointer;
+    width: 100%; transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .submit-review:hover { background: #d0540e; }
+
+  /* ─── CHEF ─── */
+  #chef { background: var(--dark); }
+  .chef-inner {
+    display: flex; align-items: center; gap: 5vw; flex-wrap: wrap;
+  }
+  .chef-photo {
+    width: 260px; height: 260px; min-width: 220px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7A1F10, #E8611A);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 100px;
+    border: 6px solid var(--turmeric);
+    box-shadow: 0 0 60px rgba(244,166,35,0.3);
+  }
+  .chef-content { flex: 1; min-width: 260px; }
+  .chef-content .section-tag { background: rgba(244,166,35,0.15); color: var(--turmeric); }
+  .chef-content .section-title { color: var(--white); }
+  .chef-content .section-sub { color: rgba(255,255,255,0.65); max-width: 520px; }
+  .chef-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900;
+    color: var(--turmeric);
+    margin: 0.5rem 0;
+  }
+  .chef-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.5rem; }
+  .chef-badge {
+    background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+  }
+
+  /* ─── HOW TO ORDER ─── */
+  #order { background: var(--ivory); }
+  .order-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.4rem; margin-top: 3rem;
+  }
+  .step-card {
+    background: var(--white); border-radius: 18px;
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow);
+    text-align: center; position: relative;
+    border: 1.5px solid rgba(232,97,26,0.07);
+  }
+  .step-num {
+    position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
+    background: var(--saffron); color: var(--white);
+    width: 36px; height: 36px; border-radius: 50%;
+    font-weight: 800; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(232,97,26,0.4);
+  }
+  .step-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .step-title { font-weight: 800; font-size: 1.05rem; color: var(--dark); margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.88rem; color: var(--soft); line-height: 1.6; }
+
+  /* ─── UPI PAYMENT ─── */
+  #payment { background: var(--cream); }
+  .payment-inner {
+    display: flex; align-items: center; gap: 5vw; flex-wrap: wrap;
+  }
+  .payment-info { flex: 1; min-width: 260px; }
+  .upi-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 2.2rem 2rem;
+    box-shadow: 0 8px 40px rgba(44,26,14,0.12);
+    border: 2px solid rgba(232,97,26,0.15);
+    max-width: 360px; width: 100%;
+  }
+  .upi-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;
+  }
+  .upi-logo {
+    width: 52px; height: 52px; background: #4E27A0;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); font-weight: 900; font-size: 0.8rem;
+    letter-spacing: -0.5px;
+  }
+  .upi-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--dark); }
+  .upi-sub { font-size: 0.82rem; color: var(--soft); }
+  .upi-divider { height: 1px; background: rgba(44,26,14,0.08); margin: 1rem 0; }
+  .upi-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 0.9rem;
+  }
+  .upi-label { font-size: 0.85rem; color: var(--soft); font-weight: 600; }
+  .upi-value { font-weight: 700; color: var(--dark); font-size: 1rem; }
+  .upi-number { font-size: 1.5rem; font-weight: 900; color: var(--saffron); letter-spacing: 2px; }
+  .copy-btn {
+    background: rgba(232,97,26,0.1); color: var(--saffron);
+    border: 1.5px solid rgba(232,97,26,0.3);
+    padding: 5px 13px; border-radius: 20px;
+    font-size: 0.78rem; font-weight: 700; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .copy-btn:hover { background: rgba(232,97,26,0.2); }
+  .upi-amount-box {
+    background: linear-gradient(135deg, #fff6e8, #fff2e0);
+    border: 2px solid rgba(232,97,26,0.25);
+    border-radius: 16px; padding: 1.2rem;
+    text-align: center; margin-top: 1rem;
+  }
+  .amount-label { font-size: 0.78rem; color: var(--soft); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  .amount-value { font-size: 2.8rem; font-weight: 900; color: var(--saffron); font-family: 'Playfair Display', serif; line-height: 1.1; }
+  .amount-per { font-size: 0.85rem; color: var(--soft); }
+  .qr-placeholder {
+    margin-top: 1.4rem; background: var(--cream);
+    border: 2px dashed rgba(232,97,26,0.3);
+    border-radius: 16px; padding: 1.4rem;
+    text-align: center;
+  }
+  .qr-grid {
+    display: grid; grid-template-columns: repeat(7,1fr); gap: 4px;
+    width: 120px; margin: 0 auto 0.8rem;
+  }
+  .qr-cell {
+    width: 14px; height: 14px; border-radius: 2px;
+    background: var(--dark);
+  }
+  .qr-cell.empty { background: transparent; }
+  .qr-label { font-size: 0.78rem; color: var(--soft); }
+  .payment-steps { flex: 1; min-width: 260px; }
+  .pay-step {
+    display: flex; gap: 16px; margin-bottom: 1.8rem; align-items: flex-start;
+  }
+  .pay-icon {
+    width: 44px; height: 44px; min-width: 44px; border-radius: 12px;
+    background: rgba(232,97,26,0.1); display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+  .pay-title { font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 3px; }
+  .pay-desc { font-size: 0.87rem; color: var(--soft); line-height: 1.55; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark);
+    padding: 3.5rem 6vw 2rem;
+  }
+  .footer-top {
+    display: flex; gap: 3rem; flex-wrap: wrap;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2rem;
+  }
+  .footer-brand { flex: 1.5; min-width: 220px; }
+  .footer-logo {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;
+  }
+  .footer-logo-circle {
+    width: 44px; height: 44px; background: var(--turmeric);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px;
+  }
+  .footer-brand-name {
+    font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white);
+  }
+  .footer-brand-name span { display: block; font-size: 0.7rem; font-family: 'Nunito', sans-serif; color: #f9c97c; letter-spacing: 1.5px; text-transform: uppercase; }
+  .footer-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; max-width: 280px; }
+  .footer-col { flex: 1; min-width: 150px; }
+  .footer-col h4 { color: var(--turmeric); font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.55rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--turmeric); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+  .footer-made { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+
+  /* ─── FLOATING ORDER ─── */
+  .float-order {
+    position: fixed; bottom: 28px; right: 28px; z-index: 999;
+    background: var(--saffron); color: var(--white);
+    padding: 14px 24px; border-radius: 50px;
+    font-weight: 800; font-size: 1rem;
+    box-shadow: 0 8px 32px rgba(232,97,26,0.5);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .float-order:hover { background: #d0540e; transform: translateY(-3px) scale(1.03); }
+  .float-pulse {
+    width: 10px; height: 10px; background: #fff; border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--white); border-radius: 24px;
+    padding: 2.5rem; max-width: 420px; width: 90%;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+    animation: slideUp 0.3s ease;
+    text-align: center;
+  }
+  @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-icon { font-size: 3rem; margin-bottom: 0.8rem; }
+  .modal-box h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
+  .modal-box p { color: var(--soft); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6; }
+  .modal-upi {
+    background: var(--cream); border-radius: 14px; padding: 1.2rem;
+    font-size: 1.4rem; font-weight: 800; color: var(--saffron); letter-spacing: 2px;
+    margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .modal-close {
+    background: var(--saffron); color: var(--white); border: none;
+    padding: 11px 32px; border-radius: 30px; font-weight: 700; font-size: 0.95rem;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .modal-close:hover { background: #d0540e; }
+  .modal-whatsapp {
+    margin-top: 0.8rem; display: block;
+    background: #25D366; color: var(--white);
+    padding: 11px 32px; border-radius: 30px; font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .modal-whatsapp:hover { background: #1eb355; }
+
+  /* ─── TOAST ─── */
+  .toast {
+    position: fixed; bottom: 90px; right: 28px; z-index: 9998;
+    background: var(--dark); color: var(--white);
+    padding: 10px 20px; border-radius: 30px;
+    font-size: 0.88rem; font-weight: 600;
+    opacity: 0; transform: translateY(10px);
+    transition: all 0.3s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+    .hero { padding: 4rem 5vw 3rem; }
+    .chef-inner, .payment-inner, .footer-top { flex-direction: column; }
+    .chef-photo { width: 180px; height: 180px; font-size: 70px; margin: 0 auto; }
+    .upi-card { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🍱</div>
+    <div class="nav-title">Indian Agarwal Food<span>Homemade • Pure Veg • Fresh Daily</span></div>
+  </div>
+  <ul>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#chef">Our Chef</a></li>
+    <li><a href="#order">How to Order</a></li>
+    <li><a href="#payment" class="nav-cta">Order Now — ₹80</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mandala" aria-hidden="true">✦</div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 100% Pure Vegetarian</div>
+    <h1>Ghar Jaisa Khana,<br/><em>Delivered to You</em></h1>
+    <p>Freshly cooked every day by Chef Deepika Agrawal. All tiffin variants — dal, sabzi, chapati, rice, pickle &amp; more — just at a flat rate.</p>
+    <div class="hero-price-pill">
+      <span>All Tiffin Variants</span>
+      <span style="font-size:0.8rem; opacity:0.6;">@</span>
+      <span>₹80 Only 🎉</span>
+    </div>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn-primary">🍛 Explore Menu</a>
+      <a href="#payment" class="btn-outline">💳 Order &amp; Pay</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">₹80</div>
+    <div class="stat-label">All Variants Flat</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Pure Veg Always</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">Fresh</div>
+    <div class="stat-label">Cooked Daily</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">⭐⭐⭐⭐⭐</div>
+    <div class="stat-label">Under Rateable</div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-header">
+    <div class="section-tag">Today's Menu</div>
+    <h2 class="section-title">All Tiffin Variants</h2>
+    <p class="section-sub">Every tiffin freshly prepared with love. Choose your favourite — every option is ₹80 only!</p>
+    <div class="veg-strip" style="margin-top:0.8rem;">
+      <div class="veg-dot"></div>
+      <span>Pure Veg Only — No Non-Veg Items</span>
+    </div>
+  </div>
+  <div class="menu-grid">
+
+    <div class="menu-card">
+      <div class="card-img">🍛<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-spicy">Spicy</span><span class="tag tag-special">Popular</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Dal Makhani Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star filled" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.9) 128 ratings</span>
+        </div>
+        <div class="card-name">Dal Makhani Tiffin</div>
+        <div class="card-desc">Slow-cooked rich dal makhani with butter + <strong>Dum Aloo sabji</strong>, served with 4 chapatis &amp; fresh salad.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Dal Makhani Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#fff4e0,#fce8c3);">🥘<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Mild</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Paneer Sabzi Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.7) 94 ratings</span>
+        </div>
+        <div class="card-name">Paneer Sabzi Tiffin</div>
+        <div class="card-desc">Tender paneer in tomato-onion gravy with 4 rotis, dal, rice &amp; seasonal salad.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Paneer Sabzi Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#eaf9f0,#c8f0d5);">🍚<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Comfort Food</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Rajma Chawal Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star filled" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.8) 110 ratings</span>
+        </div>
+        <div class="card-name">Rajma Chawal Tiffin</div>
+        <div class="card-desc">Classic Punjabi rajma on fluffy steamed rice, with 4 rotis, one sabzi &amp; fresh salad.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Rajma Chawal Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#fff8e0,#fff0c0);">🫓<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Light</span><span class="tag tag-special">Special</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Mix Veg Roti Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.6) 78 ratings</span>
+        </div>
+        <div class="card-name">Mix Veg Roti Tiffin</div>
+        <div class="card-desc">Seasonal mix veg sabzi with 4 rotis, dal tadka &amp; buttermilk.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Mix Veg Roti Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#fde8f0,#fcc8dd);">🥗<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-spicy">Tangy</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Chole Bhature Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star filled" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(5.0) 87 ratings</span>
+        </div>
+        <div class="card-name">Chole Bhature Tiffin</div>
+        <div class="card-desc">Spiced Punjabi chole with fluffy bhature (2 pcs), onion salad &amp; green chutney.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Chole Bhature Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#e8f4fb,#c0dfef);">🍱<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Everyday</span><span class="tag tag-special">Best Value</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Normal Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star filled" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.8) 215 ratings</span>
+        </div>
+        <div class="card-name">Normal Tiffin</div>
+        <div class="card-desc">Simple daily tiffin — dal, one sabzi, 4 rotis, steamed rice, salad &amp; achaar. Pure homestyle comfort.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Normal Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#fdf3e3,#f9dec0);">🥣<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">South Indian</span><span class="tag tag-special">Special</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Idli Sambar Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.5) 62 ratings</span>
+        </div>
+        <div class="card-name">Idli Sambar Tiffin</div>
+        <div class="card-desc">Soft steamed idlis (4 pcs) with piping hot sambar &amp; coconut chutney on the side.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Idli Sambar Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#f0e8ff,#d8c0f5);">🫔<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-spicy">Spicy</span><span class="tag tag-special">Classic</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Aloo Paratha Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star filled" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.9) 143 ratings</span>
+        </div>
+        <div class="card-name">Aloo Paratha Tiffin</div>
+        <div class="card-desc">Crispy stuffed aloo parathas (3 pcs) with dahi &amp; green chutney.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Aloo Paratha Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#eef8e8,#c8edae);">🥦<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Fresh</span><span class="tag tag-special">Favourite</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Gobi Paratha Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.7) 89 ratings</span>
+        </div>
+        <div class="card-name">Gobi Paratha Tiffin</div>
+        <div class="card-desc">Freshly grated cauliflower stuffed parathas (3 pcs) with dahi, achaar &amp; green chutney.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Gobi Paratha Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#e8f5e0,#b8e890);">🌿<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Healthy</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Methi Paratha Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.6) 55 ratings</span>
+        </div>
+        <div class="card-name">Methi Paratha Tiffin</div>
+        <div class="card-desc">Aromatic fresh methi (fenugreek) parathas (3 pcs) with dahi, green chutney &amp; salad.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Methi Paratha Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#fdf0ff,#f0c8ff);">🧀<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Rich</span><span class="tag tag-special">Chef's Pick</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Paneer Paratha Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star filled" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.8) 76 ratings</span>
+        </div>
+        <div class="card-name">Paneer Paratha Tiffin</div>
+        <div class="card-desc">Soft crumbled paneer stuffed parathas (2 pcs) with dahi, green chutney &amp; tomato sauce.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Paneer Paratha Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#e8fff0,#b8f0cc);">🍜<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Light</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Khichdi Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.5) 48 ratings</span>
+        </div>
+        <div class="card-name">Khichdi Tiffin</div>
+        <div class="card-desc">Wholesome moong dal khichdi with ghee tadka, papad, curd &amp; achar — the ultimate comfort meal.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Khichdi Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#eafff5,#b8f5da);">🧆<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Healthy</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Palak Dal Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.6) 67 ratings</span>
+        </div>
+        <div class="card-name">Palak Dal Tiffin</div>
+        <div class="card-desc">Nutritious palak (spinach) dal with 4 rotis, one sabzi, pickle &amp; onion salad.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Palak Dal Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="card-img" style="background: linear-gradient(135deg,#fff8e8,#ffebc0);">🥕<div class="veg-mark"></div></div>
+      <div class="card-body">
+        <div class="tags"><span class="tag tag-mild">Seasonal</span><span class="tag tag-special">Homestyle</span></div>
+        <div class="card-rating">
+          <div class="stars" data-item="Gajar Matar Tiffin">
+            <span class="star filled" onclick="rateItem(this,1)">★</span>
+            <span class="star filled" onclick="rateItem(this,2)">★</span>
+            <span class="star filled" onclick="rateItem(this,3)">★</span>
+            <span class="star filled" onclick="rateItem(this,4)">★</span>
+            <span class="star filled" onclick="rateItem(this,5)">★</span>
+          </div>
+          <span class="rating-count">(4.7) 58 ratings</span>
+        </div>
+        <div class="card-name">Gajar Matar Tiffin</div>
+        <div class="card-desc">Fresh gajar aur matar ki sabzi with 4 rotis, arhar dal, steamed rice &amp; fresh salad.</div>
+        <div class="card-footer">
+          <div class="card-price"><sup>₹</sup>80</div>
+          <button class="order-btn" onclick="openOrder('Gajar Matar Tiffin')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHEF -->
+<section id="chef">
+  <div class="chef-inner">
+    <div class="chef-photo">👩‍🍳</div>
+    <div class="chef-content">
+      <div class="section-tag">Meet Your Chef</div>
+      <div class="chef-name">Deepika Agrawal</div>
+      <h2 class="section-title" style="color:var(--white);">Cooking with Heart,<br/>Feeding with Love</h2>
+      <p class="section-sub">
+        Chef Deepika Agrawal brings years of traditional home cooking expertise to every tiffin she prepares. Inspired by authentic Indian household recipes passed down through generations, every meal is cooked fresh with no preservatives, no compromises — just pure homemade goodness. She believes that good food is the foundation of a happy, healthy day.
+      </p>
+      <div class="chef-badges">
+        <span class="chef-badge">🌿 Pure Veg Specialist</span>
+        <span class="chef-badge">🏡 Traditional Recipes</span>
+        <span class="chef-badge">🚫 No Preservatives</span>
+        <span class="chef-badge">⏰ Fresh Cooked Daily</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<section id="order">
+  <div style="text-align:center; margin-bottom: 1rem;">
+    <div class="section-tag">Simple 4 Steps</div>
+    <h2 class="section-title">How to Order</h2>
+    <p class="section-sub" style="margin: 0 auto;">Get your tiffin delivered in a few easy steps. Fast, simple, and delicious!</p>
+  </div>
+  <div class="order-steps">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-icon">📋</div>
+      <div class="step-title">Choose Your Tiffin</div>
+      <div class="step-desc">Browse our menu and pick your favourite tiffin variant for today.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-icon">📲</div>
+      <div class="step-title">Send WhatsApp</div>
+      <div class="step-desc">Message us your order on WhatsApp with your name &amp; address.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-icon">💸</div>
+      <div class="step-title">Pay via UPI</div>
+      <div class="step-desc">Transfer ₹80 directly to our UPI number 7572917364.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-icon">🍱</div>
+      <div class="step-title">Get Delivery</div>
+      <div class="step-desc">Your fresh, hot tiffin arrives at your door — enjoy!</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section id="payment">
+  <div style="text-align:center; margin-bottom: 2.5rem;">
+    <div class="section-tag">Quick Pay</div>
+    <h2 class="section-title">Pay Directly via UPI</h2>
+    <p class="section-sub" style="margin: 0 auto;">No middlemen. Pay directly to us and your tiffin is confirmed instantly.</p>
+  </div>
+  <div class="payment-inner">
+    <div class="payment-steps">
+      <div class="pay-step">
+        <div class="pay-icon">📱</div>
+        <div>
+          <div class="pay-title">Open Any UPI App</div>
+          <div class="pay-desc">Use PhonePe, Google Pay, Paytm, BHIM, or any UPI app on your phone.</div>
+        </div>
+      </div>
+      <div class="pay-step">
+        <div class="pay-icon">📤</div>
+        <div>
+          <div class="pay-title">Send to Mobile Number</div>
+          <div class="pay-desc">Enter the UPI number <strong>7572917364</strong> in the "Pay by Mobile" section.</div>
+        </div>
+      </div>
+      <div class="pay-step">
+        <div class="pay-icon">₹</div>
+        <div>
+          <div class="pay-title">Enter ₹80 Per Tiffin</div>
+          <div class="pay-desc">For multiple tiffins, simply multiply by 80. E.g., 2 tiffins = ₹160.</div>
+        </div>
+      </div>
+      <div class="pay-step">
+        <div class="pay-icon">✅</div>
+        <div>
+          <div class="pay-title">Share Screenshot</div>
+          <div class="pay-desc">Send the payment screenshot on WhatsApp to confirm your order.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="upi-card">
+      <div class="upi-header">
+        <div class="upi-logo">UPI</div>
+        <div>
+          <div class="upi-title">Pay Now</div>
+          <div class="upi-sub">Indian Agarwal Food</div>
+        </div>
+      </div>
+      <div class="upi-divider"></div>
+
+      <div class="upi-row">
+        <span class="upi-label">Store Name</span>
+        <span class="upi-value">Indian Agarwal Food</span>
+      </div>
+      <div class="upi-row">
+        <span class="upi-label">Chef</span>
+        <span class="upi-value">Deepika Agrawal</span>
+      </div>
+      <div class="upi-row">
+        <span class="upi-label">UPI Number</span>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="upi-number" id="upi-num">7572917364</span>
+          <button class="copy-btn" onclick="copyUPI()">Copy</button>
+        </div>
+      </div>
+
+      <div class="upi-amount-box">
+        <div class="amount-label">Tiffin Price</div>
+        <div class="amount-value">₹80</div>
+        <div class="amount-per">Per Tiffin — All Variants</div>
+      </div>
+
+      <div class="qr-placeholder">
+        <div class="qr-grid">
+          <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
+          <div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div>
+          <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
+          <div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div>
+          <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
+          <div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div>
+          <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
+        </div>
+        <div class="qr-label">Scan or pay to: <strong>7572917364</strong></div>
+      </div>
+
+      <a href="https://wa.me/917572917364?text=Hello%20Indian%20Agarwal%20Food%2C%20I%20want%20to%20order%20a%20tiffin%20for%20%E2%82%B980%20.%20Please%20confirm%20my%20order!" target="_blank" class="modal-whatsapp" style="margin-top: 1.2rem; display:block; text-align:center; text-decoration:none; padding: 12px 20px; border-radius:14px; font-weight:800; font-size:0.95rem; background:#25D366; color:#fff;">
+        💬 WhatsApp Order Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS SECTION -->
+<section id="reviews">
+  <div class="reviews-header">
+    <div class="section-tag">Customer Reviews</div>
+    <h2 class="section-title">Log Kya Kehte Hain</h2>
+    <p class="section-sub" style="margin: 0 auto;">Hamare khush customers ki sachchi baatein. Aap bhi apni rating do!</p>
+  </div>
+
+  <!-- Summary -->
+  <div class="review-summary">
+    <div class="summary-big">
+      <div class="summary-score">4.8</div>
+      <div class="summary-stars">⭐⭐⭐⭐⭐</div>
+      <div class="summary-label">1,210 total ratings</div>
+    </div>
+    <div class="summary-bars">
+      <div class="bar-row">
+        <span class="bar-label">5 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+        <span class="bar-count">82%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">4 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:12%; background:#f4a623cc"></div></div>
+        <span class="bar-count">12%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">3 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:4%; background:#f4a62388"></div></div>
+        <span class="bar-count">4%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:1%; background:#f4a62355"></div></div>
+        <span class="bar-count">1%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">1 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:1%; background:#f4a62333"></div></div>
+        <span class="bar-count">1%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Cards -->
+  <div class="reviews-grid" id="reviewsGrid">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="reviewer-avatar" style="background: linear-gradient(135deg,#E8611A,#f4a623);">R</div>
+        <div>
+          <div class="reviewer-name">Ravi Sharma</div>
+          <div class="reviewer-meta">Agra • 2 days ago</div>
+        </div>
+      </div>
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">Bahut hi tasty aur ghar jaisa khana milta hai. Dal Makhani ka toh jawab nahi! Roz order karta hoon.</div>
+      <span class="review-item-tag">Dal Makhani Tiffin</span>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="reviewer-avatar" style="background: linear-gradient(135deg,#3A7D44,#68b874);">P</div>
+        <div>
+          <div class="reviewer-name">Priya Gupta</div>
+          <div class="reviewer-meta">Kamla Nagar • 5 days ago</div>
+        </div>
+      </div>
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">Deepika ji ke haath ka khana ekdum maa ke haath jaisa lagta hai. Aloo Paratha zabardast tha!</div>
+      <span class="review-item-tag">Aloo Paratha Tiffin</span>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="reviewer-avatar" style="background: linear-gradient(135deg,#4E27A0,#7b52d4);">A</div>
+        <div>
+          <div class="reviewer-name">Amit Verma</div>
+          <div class="reviewer-meta">Agra • 1 week ago</div>
+        </div>
+      </div>
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">Sirf 80 rupaye mein itna swaad khana — ye toh kamaal ki deal hai. Chole Bhature mast the!</div>
+      <span class="review-item-tag">Chole Bhature Tiffin</span>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="reviewer-avatar" style="background: linear-gradient(135deg,#B5251B,#e8611a);">S</div>
+        <div>
+          <div class="reviewer-name">Sunita Agarwal</div>
+          <div class="reviewer-meta">Kamla Nagar • 1 week ago</div>
+        </div>
+      </div>
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">Paneer Paratha fresh tha, green chutney aur tomato sauce ke saath bahut achha laga. Packaging bhi clean thi.</div>
+      <span class="review-item-tag">Paneer Paratha Tiffin</span>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="reviewer-avatar" style="background: linear-gradient(135deg,#C98B2A,#f4c76a);">M</div>
+        <div>
+          <div class="reviewer-name">Mohan Das</div>
+          <div class="reviewer-meta">Agra • 2 weeks ago</div>
+        </div>
+      </div>
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">Rajma Chawal aur 4 rotis — full pet bharti hai sirf 80 mein. Roz nahi khaya toh din adhura lagta hai!</div>
+      <span class="review-item-tag">Rajma Chawal Tiffin</span>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="reviewer-avatar" style="background: linear-gradient(135deg,#1a6b3a,#3A7D44);">K</div>
+        <div>
+          <div class="reviewer-name">Kavita Singh</div>
+          <div class="reviewer-meta">Agra • 2 weeks ago</div>
+        </div>
+      </div>
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">Gajar Matar ki sabzi bahut hi fresh thi, bilkul sezon ka khana. Aur salad bhi fresh diya. 5 star pakka!</div>
+      <span class="review-item-tag">Gajar Matar Tiffin</span>
+    </div>
+  </div>
+
+  <!-- Write Review Form -->
+  <div class="write-review">
+    <h3>✍️ Apni Rating Do</h3>
+    <p>Aapka feedback hamare liye bahut zaroori hai. Apna experience share karein!</p>
+    <div class="form-group">
+      <label class="form-label">Aapka Naam</label>
+      <input type="text" class="form-input" id="reviewName" placeholder="Jaise: Ravi Sharma" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tiffin Select Karein</label>
+      <select class="form-select" id="reviewItem">
+        <option value="">-- Tiffin chunein --</option>
+        <option>Dal Makhani Tiffin</option>
+        <option>Paneer Sabzi Tiffin</option>
+        <option>Rajma Chawal Tiffin</option>
+        <option>Mix Veg Roti Tiffin</option>
+        <option>Chole Bhature Tiffin</option>
+        <option>Normal Tiffin</option>
+        <option>Idli Sambar Tiffin</option>
+        <option>Aloo Paratha Tiffin</option>
+        <option>Gobi Paratha Tiffin</option>
+        <option>Methi Paratha Tiffin</option>
+        <option>Paneer Paratha Tiffin</option>
+        <option>Khichdi Tiffin</option>
+        <option>Palak Dal Tiffin</option>
+        <option>Gajar Matar Tiffin</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Rating</label>
+      <div class="form-stars-pick" id="pickStars">
+        <span class="pick-star" onclick="pickRating(1)">★</span>
+        <span class="pick-star" onclick="pickRating(2)">★</span>
+        <span class="pick-star" onclick="pickRating(3)">★</span>
+        <span class="pick-star" onclick="pickRating(4)">★</span>
+        <span class="pick-star" onclick="pickRating(5)">★</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Aapka Review</label>
+      <textarea class="form-textarea" id="reviewText" placeholder="Khane ke baare mein batayein..."></textarea>
+    </div>
+    <button class="submit-review" onclick="submitReview()">⭐ Review Submit Karein</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-circle">🍱</div>
+        <div class="footer-brand-name">Indian Agarwal Food<span>Homemade Tiffin • Pure Veg</span></div>
+      </div>
+      <p class="footer-desc">Ghar jaisa khana delivered to your door. Freshly prepared every day by Chef Deepika Agrawal with love and tradition.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#menu">Today's Menu</a></li>
+        <li><a href="#chef">Our Chef</a></li>
+        <li><a href="#order">How to Order</a></li>
+        <li><a href="#payment">Pay via UPI</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/917572917364">📱 7572917364 (WhatsApp)</a></li>
+        <li><a href="tel:9998698138">📞 9998698138 (Call Only)</a></li>
+        <li><a href="#payment">💳 UPI: 7572917364</a></li>
+        <li><a href="#">📍 Kamla Nagar, Agra</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#">🌿 100% Pure Veg</a></li>
+        <li><a href="#">⭐ Top Rated Store</a></li>
+        <li><a href="#">🏡 Home Kitchen</a></li>
+        <li><a href="#">🚫 No Preservatives</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 Indian Agarwal Food. All Rights Reserved. Chef: Deepika Agrawal.</div>
+    <div class="footer-made" style="color:rgba(255,255,255,0.35);">🌿 Pure Veg Always • ₹80 Flat</div>
+  </div>
+</footer>
+
+<!-- FLOATING ORDER BUTTON -->
+<a href="#payment" class="float-order">
+  <div class="float-pulse"></div>
+  Order Tiffin — ₹80
+</a>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal-box">
+    <div class="modal-icon">🍱</div>
+    <h3>Order Confirmed!</h3>
+    <p>Great choice! Pay ₹80 directly via UPI and send us a screenshot on WhatsApp to confirm your <span id="modalItem">tiffin</span>.</p>
+    <div class="modal-upi">
+      📲 7572917364
+      <button class="copy-btn" onclick="copyUPI()" style="font-size:0.75rem;">Copy</button>
+    </div>
+    <a href="https://wa.me/917572917364?text=Hello%20Indian%20Agarwal%20Food!%20I%20want%20to%20order%20a%20tiffin.%20Sending%20payment%20shortly." target="_blank" class="modal-whatsapp">💬 Open WhatsApp to Confirm</a>
+    <button class="modal-close" onclick="closeOrder()" style="margin-top:0.8rem; background: transparent; color: var(--soft); border: 1px solid rgba(0,0,0,0.15);">Close</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ UPI number copied!</div>
+
+<script>
+  function openOrder(item) {
+    document.getElementById('modalItem').textContent = item;
+    document.getElementById('orderModal').classList.add('open');
+  }
+  function closeOrder() {
+    document.getElementById('orderModal').classList.remove('open');
+  }
+  document.getElementById('orderModal').addEventListener('click', function(e) {
+    if (e.target === this) closeOrder();
+  });
+  function copyUPI() {
+    navigator.clipboard.writeText('7572917364').then(function() {
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    });
+  }
+</script>
+</body>
+</html>
